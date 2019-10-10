@@ -179,7 +179,7 @@ class FirstMainWindow(object):
         self.transfer.setItemText(4, _translate("MainWindow", "TE"))
         self.done.setText(_translate("MainWindow", "DONE"))
         self.createtask.setText(_translate("MainWindow", "CREATE TASK"))
-        self.label.setText(_translate("MainWindow", "BOOKING NUMBER"))
+        self.label.setText(_translate("MainWindow", "SEARCH NUMBER:"))
         self.all.setText(_translate("MainWindow", "ALL"))
         self.edit.setText(_translate("MainWindow", "EDIT"))
 

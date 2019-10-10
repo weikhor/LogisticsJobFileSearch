@@ -204,7 +204,7 @@ class ThirdMainWindow(object):
         self.label8.setText(_translate("MainWindow", "Destination:"))
         self.upload.setText(_translate("MainWindow", "UPLOAD"))
         self.label7.setText(_translate("MainWindow", "Origin:"))
-        self.label6.setText(_translate("MainWindow", "AWB:"))
+        self.label6.setText(_translate("MainWindow", "Airway Bill No:"))
         self.deleteall.setText(_translate("MainWindow", "DELETE ALL"))
         self.back.setText(_translate("MainWindow", "BACK"))
 

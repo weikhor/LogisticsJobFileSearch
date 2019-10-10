@@ -2,7 +2,8 @@ import sys
 import os
 import shutil
 
-from PyQt5.QtWidgets import QDialog, QApplication, QInputDialog, QListWidgetItem, QMessageBox, QMainWindow, QTableWidgetItem, QTextEdit,QFileDialog,QSizePolicy, QMessageBox
+from PyQt5.QtWidgets import QDialog, QApplication, QInputDialog, QListWidgetItem, QMessageBox, QMainWindow, QTableWidgetItem, QTextEdit,QFileDialog,QSizePolicy, QMessageBox,QCompleter
+from PyQt5 import QtCore
 from First import *
 from Second import *
 from Third import *
@@ -15,8 +16,12 @@ from checkcombobox import *
 import datetime
 import sqlite3
 
+import os
+
 #MAINPATH = r"D:"
-MAINPATH = os.getcwd()
+#MAINPATH = os.getcwd()
+MAINPATH = r"C:\Users\CheanHui\Desktop"
+#MAINPATH = r"\\EDI-PC\Job Search"
 
 class Main:
     def __init__(self):
@@ -112,32 +117,32 @@ class Main:
         if(self.SecondPage.SecondPageUi.transfer.currentText() == "SI"):
             self.SecondPage.SecondPageUi.transfer.setCurrentIndex(0)
             self.SecondPage.donetoupload = True
-            QMessageBox.about(self.SecondPage, "Message!!!", "Sea Import")
+            QMessageBox.about(self.SecondPage, "Message!!!", "Insert Sea Import Task" )
         elif(self.SecondPage.SecondPageUi.transfer.currentText() == "SE"):
             self.SecondPage.SecondPageUi.transfer.setCurrentIndex(1)
             self.SecondPage.donetoupload = True
-            QMessageBox.about(self.SecondPage, "Message!!!", "Sea Export")
+            QMessageBox.about(self.SecondPage, "Message!!!", "Insert Sea Export Task")
         elif(self.SecondPage.SecondPageUi.transfer.currentText() == "AI"):
             self.ThirdPage.ThirdPageUi.transfer.setCurrentIndex(2)
             self.SecondPage.close()
             self.SecondPage.deleteitems()
             self.ThirdPage.show()
             self.ThirdPage.donetoupload = True
-            QMessageBox.about(self.ThirdPage, "Message!!!", "Air Import")
+            QMessageBox.about(self.ThirdPage, "Message!!!", "Insert Air Import Task")
         elif(self.SecondPage.SecondPageUi.transfer.currentText() == "AE"):
             self.ThirdPage.ThirdPageUi.transfer.setCurrentIndex(3)
             self.SecondPage.close()
             self.SecondPage.deleteitems()
             self.ThirdPage.show()
             self.ThirdPage.donetoupload = True
-            QMessageBox.about(self.ThirdPage, "Message!!!", "Air Export")
+            QMessageBox.about(self.ThirdPage, "Message!!!", "Insert Air Export Task")
         else:
             self.FourthPage.FourthPageUi.transfer.setCurrentIndex(4)
             self.SecondPage.close()
             self.SecondPage.deleteitems()
             self.FourthPage.show()
             self.FourthPage.donetoupload = True
-            QMessageBox.about(self.FourthPage, "Message!!!", "Truck")
+            QMessageBox.about(self.FourthPage, "Message!!!", "Insert Truck Task")
 
     def Done3(self):
         if(self.ThirdPage.ThirdPageUi.transfer.currentText() == "SI"):
@@ -146,29 +151,29 @@ class Main:
             self.ThirdPage.deleteitems()
             self.SecondPage.show()
             self.SecondPage.donetoupload = True
-            QMessageBox.about(self.SecondPage, "Message!!!", "Sea Import")
+            QMessageBox.about(self.SecondPage, "Message!!!", "Insert Sea Import Task")
         elif(self.ThirdPage.ThirdPageUi.transfer.currentText() == "SE"):
             self.SecondPage.SecondPageUi.transfer.setCurrentIndex(1)
             self.ThirdPage.close()
             self.ThirdPage.deleteitems()
             self.SecondPage.show()
             self.SecondPage.donetoupload = True
-            QMessageBox.about(self.SecondPage, "Message!!!", "Sea Export")
+            QMessageBox.about(self.SecondPage, "Message!!!", "Insert Sea Export Task")
         elif(self.ThirdPage.ThirdPageUi.transfer.currentText() == "AI"):
             self.ThirdPage.ThirdPageUi.transfer.setCurrentIndex(2)
             self.ThirdPage.donetoupload = True
-            QMessageBox.about(self.ThirdPage, "Message!!!", "Air Import")
+            QMessageBox.about(self.ThirdPage, "Message!!!", "Insert Air Import Task")
         elif(self.ThirdPage.ThirdPageUi.transfer.currentText() == "AE"):
             self.ThirdPage.ThirdPageUi.transfer.setCurrentIndex(3)
             self.ThirdPage.donetoupload = True
-            QMessageBox.about(self.ThirdPage, "Message!!!", "Air Export")
+            QMessageBox.about(self.ThirdPage, "Message!!!", "Insert Air Export Task")
         else:
             self.FourthPage.FourthPageUi.transfer.setCurrentIndex(4)
             self.ThirdPage.close()
             self.ThirdPage.deleteitems()
             self.FourthPage.show()
             self.FourthPage.donetoupload = True
-            QMessageBox.about(self.FourthPage, "Message!!!", "Truck")
+            QMessageBox.about(self.FourthPage, "Message!!!", "Insert Truck Task")
             
     def Done4(self):
         if(self.FourthPage.FourthPageUi.transfer.currentText() == "SI"):
@@ -177,32 +182,32 @@ class Main:
             self.FourthPage.deleteitems()
             self.SecondPage.show()
             self.SecondPage.donetoupload = True
-            QMessageBox.about(self.SecondPage, "Message!!!", "Sea Import")
+            QMessageBox.about(self.SecondPage, "Message!!!", "Insert Sea Import Task")
         elif(self.FourthPage.FourthPageUi.transfer.currentText() == "SE"):
             self.SecondPage.SecondPageUi.transfer.setCurrentIndex(1)
             self.FourthPage.close()
             self.FourthPage.deleteitems()
             self.SecondPage.show()
             self.SecondPage.donetoupload = True
-            QMessageBox.about(self.SecondPage, "Message!!!", "Sea Export")
+            QMessageBox.about(self.SecondPage, "Message!!!", "Insert Sea Export Task")
         elif(self.FourthPage.FourthPageUi.transfer.currentText() == "AI"):
             self.ThirdPage.ThirdPageUi.transfer.setCurrentIndex(2)
             self.FourthPage.close()
             self.FourthPage.deleteitems()
             self.ThirdPage.show()
             self.ThirdPage.donetoupload = True
-            QMessageBox.about(self.ThirdPage, "Message!!!", "Air Import")
+            QMessageBox.about(self.ThirdPage, "Message!!!", "Insert Air Import Task")
         elif(self.FourthPage.FourthPageUi.transfer.currentText() == "AE"):
             self.ThirdPage.ThirdPageUi.transfer.setCurrentIndex(3)
             self.FourthPage.close()
             self.FourthPage.deleteitems()
             self.ThirdPage.show()
             self.ThirdPage.donetoupload = True
-            QMessageBox.about(self.ThirdPage, "Message!!!", "Air Export")
+            QMessageBox.about(self.ThirdPage, "Message!!!", "Insert Air Export Task")
         else:
             self.FourthPage.FourthPageUi.transfer.setCurrentIndex(4)
             self.FourthPage.donetoupload = True
-            QMessageBox.about(self.FourthPage, "Message!!!", "Truck")
+            QMessageBox.about(self.FourthPage, "Message!!!", "Insert Truck Task")
 
 class FirstPage(QMainWindow):
     def __init__(self):
@@ -212,9 +217,11 @@ class FirstPage(QMainWindow):
         self.FirstPageUi.first_setupUi(self)
         self.secondpage = SecondPage()
         #booking combo box
-        self.FirstPageUi.bookingNo.addItem("Booking No", True)
+        self.FirstPageUi.bookingNo.addItem("Job File No", True)
+        self.FirstPageUi.bookingNo.addItem("JJ No", True)
+        self.FirstPageUi.bookingNo.addItem("Sea/Truck Booking No", True)
         self.FirstPageUi.bookingNo.addItem("Container No", True)
-        self.FirstPageUi.bookingNo.addItem("BL No", True)
+        self.FirstPageUi.bookingNo.addItem("Sea BL No", True)
         self.FirstPageUi.bookingNo.addItem("AWB No", True)
         #sort button
         #self.FirstPageUi.sort.additem("SORT", True)
@@ -230,9 +237,7 @@ class FirstPage(QMainWindow):
         self.num_column = 0
         #data for seadatabase, airdatabase, truckdatabase
         self.data = []
-        #allinformation
-        self.all = False
-        
+    
         self.path = MAINPATH + "\ ".strip() + "Job Database"
         if not os.path.exists(self.path):
             os.mkdir(self.path)
@@ -260,25 +265,185 @@ class FirstPage(QMainWindow):
         self.FirstPageUi.tableWidget.horizontalHeader().sectionClicked.connect(self.allsortinformation)
         self.sortinformation = "YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC"
         ###########
+        self.openalldatabase()
+        ###########
+        self.done = False
+        ###########
+        self.clip = QtWidgets.QApplication.clipboard()
         self.show()
 
-    def allsortinformation(self, column):
-        access1 = {0:"Job_File_No",1:"JJ_No",2:"Shipper",3:"Consignee",4:"Booking_No",5:"BL",6:"ORIGIN",7:"DESTINATION",8:"CONTAINER_NO",9:"Transfer"}
-        access2 = {0:"Job_File_No",1:"JJ_No",2:"Shipper",3:"Consignee",4:"AWB",5:"ORIGIN",6:"DESTINATION",7:"Transfer"}
-        access3 = {0:"Job_File_No",1:"JJ_No",2:"Shipper",3:"Consignee",4:"Booking_No",5:"ORIGIN",6:"DESTINATION",7:"CONTAINER_NO",8:"Transfer"}
+        self.changeText(0)
+        self.FirstPageUi.bookingNo.currentIndexChanged.connect(self.changeText)
+
+    def changeText(self, index):
+        booking_Number = self.FirstPageUi.bookingNo.currentText()
+
+        pathtransfer = MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "database.db"
+        conn = sqlite3.connect(pathtransfer)
+        c = conn.cursor()
+
+        data = []
 
         
-        if(self.FirstPageUi.tableWidget.columnCount() == 10):
-            self.sortinformation = access1[column]
-            self.allinformation()
-        if(self.FirstPageUi.tableWidget.columnCount() == 8):
-            self.sortinformation = access2[column]
-            self.allinformation()
-        if(self.FirstPageUi.tableWidget.columnCount() == 9):
-            self.sortinformation = access3[column]
-            self.allinformation()
+        if(booking_Number == "Job File No"):
+            c.execute('SELECT Job_File_No FROM database')
+            data = data + c.fetchall()
+                
+        if(booking_Number == "JJ No"):
+            c.execute('SELECT JJ_No FROM database')
+            data = data + c.fetchall()
+                
+        if(booking_Number == "Sea/Truck Booking No"):
+            c.execute('SELECT Booking_No_Sea FROM database')
+            data = data + c.fetchall()
 
-        self.sortinformation = "YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC"
+        if(booking_Number == "Sea/Truck Booking No"):
+            c.execute('SELECT Booking_No_Truck No FROM database')
+            data = data + c.fetchall()
+
+        if(booking_Number == "Container No"):
+            c.execute('SELECT CONTAINER_NO FROM database')
+            data = data + c.fetchall()
+
+        if(booking_Number == "Sea BL No"):
+            c.execute('SELECT BL FROM database')
+            data = data + c.fetchall()
+
+        if(booking_Number == "AWB No"):
+            c.execute('SELECT AWB No FROM database')
+            data = data + c.fetchall()
+
+        DATA = []
+        for d in data:
+            DATA.append(d[0])
+
+        #DATA.sort()
+        
+        completer = QCompleter(DATA, self.FirstPageUi.lineEdit)
+        self.FirstPageUi.lineEdit.setCompleter(completer)
+        
+
+    def allsortinformation(self, column):
+        p = self.path+"\ ".strip()+"database.db"
+        conn = sqlite3.connect(p)
+        c = conn.cursor()
+        
+        if(self.done == True):
+            access = {0:"Job_File_No",1:"JJ_No",2:"Shipper",3:"Consignee",4:"Booking_No_Sea",5:"AWB",6:"Booking_No_Truck",7:"BL",8:"ORIGIN",
+                  9:"DESTINATION",10:"CONTAINER_NO",11:"Transfer"}
+
+            c.execute("SELECT * FROM database ORDER BY " + access[column])
+            data = c.fetchall()
+
+            ACCESS = ["Job File No","JJ No","Shipper","Consignee","Sea Booking No","Air AWB","Truck Booking No","Sea BL No ","Origin",
+                      "Destination","Container No","Transport"]
+
+            self.FirstPageUi.tableWidget.setColumnCount(len(ACCESS))
+            self.FirstPageUi.tableWidget.setRowCount(len(data))
+            self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(ACCESS)
+
+
+            for i in range(len(data)):
+                for j in range(11):
+                    self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(data[i][j]))
+                    self.FirstPageUi.tableWidget.setItem(i, 11, QTableWidgetItem(data[i][15]))
+                    
+            self.data = data
+            
+        else:
+            transfer = self.FirstPageUi.transfer.currentText()
+            DATA = None
+            
+            if(self.FirstPageUi.tableWidget.columnCount() == 10):
+                access1 = {0:"Job_File_No",1:"JJ_No",2:"Shipper",3:"Consignee",4:"Booking_No_Sea",5:"BL",6:"ORIGIN",
+                  7:"DESTINATION",8:"CONTAINER_NO",9:"Transfer"}
+                Access1 = ["Job File No","JJ No","Shipper","Consignee","Sea Booking No","Sea BL No","Origin",
+                  "Destination","Container No","Transport"]
+                data_col1 = access1[column]
+                
+                if(transfer == "SI"):
+                    c.execute("SELECT * FROM database WHERE Transfer='SI' ORDER BY " + data_col1
+                              + " ASC,YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC")
+                    DATA = c.fetchall()
+                else:
+                    c.execute("SELECT * FROM database WHERE Transfer='SE' ORDER BY " + data_col1
+                              + " ASC,YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC")
+                    DATA = c.fetchall()
+               
+                self.FirstPageUi.tableWidget.setColumnCount(len(access1))
+                self.FirstPageUi.tableWidget.setRowCount(len(DATA))
+                self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(Access1)
+                
+
+                for i in range(len(DATA)):
+                    for j in range(5):
+                        self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(DATA[i][j]))
+                    
+                    self.FirstPageUi.tableWidget.setItem(i, 5, QTableWidgetItem(DATA[i][7]))
+                    self.FirstPageUi.tableWidget.setItem(i, 6, QTableWidgetItem(DATA[i][8]))
+                    self.FirstPageUi.tableWidget.setItem(i, 7, QTableWidgetItem(DATA[i][9]))
+                    self.FirstPageUi.tableWidget.setItem(i, 8, QTableWidgetItem(DATA[i][10]))
+                    self.FirstPageUi.tableWidget.setItem(i, 9, QTableWidgetItem(transfer))
+
+                self.data = DATA
+                
+                    
+            elif(self.FirstPageUi.tableWidget.columnCount() == 8):
+                access2 = {0:"Job_File_No",1:"JJ_No",2:"Shipper",3:"Consignee",4:"AWB",5:"ORIGIN",6:"DESTINATION",7:"Transfer"}
+                Access2 = ["Job File No","JJ No","Shipper","Consignee","Air AWB","Origin","Destination","Transport"]
+                data_col2 = access2[column]
+
+                if(transfer == "AI"):
+                    c.execute("SELECT * FROM database WHERE Transfer='AI' ORDER BY " + data_col2
+                              + " ASC,YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC")
+                    DATA = c.fetchall()
+                else:
+                    c.execute("SELECT * FROM database WHERE Transfer='AE' ORDER BY " + data_col2)
+                    DATA = c.fetchall()
+
+                self.FirstPageUi.tableWidget.setColumnCount(len(access2))
+                self.FirstPageUi.tableWidget.setRowCount(len(DATA))
+                self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(Access2)
+                
+
+                for i in range(len(DATA)):
+                    for j in range(4):
+                        self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(DATA[i][j]))
+                    
+                        self.FirstPageUi.tableWidget.setItem(i, 4, QTableWidgetItem(DATA[i][5]))
+                        self.FirstPageUi.tableWidget.setItem(i, 5, QTableWidgetItem(DATA[i][8]))
+                        self.FirstPageUi.tableWidget.setItem(i, 6, QTableWidgetItem(DATA[i][9]))
+                        self.FirstPageUi.tableWidget.setItem(i, 7, QTableWidgetItem(transfer))
+
+                self.data = DATA
+
+            else:
+                access3 = {0:"Job_File_No",1:"JJ_No",2:"Shipper",3:"Consignee",4:"Booking_No_Truck",5:"ORIGIN",6:"DESTINATION",
+                           7:"CONTAINER_NO",8:"Transfer"}
+                Access3 = ["Job File No","JJ No","Shipper","Consignee","Truck Booking No","Origin","Destination",
+                           "Container No","Transport"]
+                data_col3 = access3[column]
+                c.execute("SELECT * FROM database WHERE Transfer='TE' ORDER BY " + data_col3)
+                DATA = c.fetchall()
+
+                self.FirstPageUi.tableWidget.setColumnCount(len(access3))
+                self.FirstPageUi.tableWidget.setRowCount(len(DATA))
+                self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(Access3)
+
+                for i in range(len(DATA)):
+                    for j in range(4):
+                        self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(DATA[i][j]))
+                    
+                    self.FirstPageUi.tableWidget.setItem(i, 4, QTableWidgetItem(DATA[i][6]))
+                    self.FirstPageUi.tableWidget.setItem(i, 5, QTableWidgetItem(DATA[i][8]))
+                    self.FirstPageUi.tableWidget.setItem(i, 6, QTableWidgetItem(DATA[i][9]))
+                    self.FirstPageUi.tableWidget.setItem(i, 7, QTableWidgetItem(DATA[i][10]))
+                    self.FirstPageUi.tableWidget.setItem(i, 8, QTableWidgetItem(transfer))
+
+                self.data = DATA
+
+        c.close()       
+        #self.sortinformation = "YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC"
             
     def fifthdeleteall(self):
         self.FirstPageUi.tableWidget.setRowCount(0)
@@ -310,28 +475,27 @@ class FirstPage(QMainWindow):
         self.FirstPageUi.tableWidget.setRowCount(0)
 
         self.show()
+
         
     def editinformation(self):
-        if(len(self.data) != 0):
+       p = self.path+"\ ".strip()+"database.db"
+       conn = sqlite3.connect(p)
+       c = conn.cursor()
+       
+       if(self.done == True and len(self.data) != 0):
             currentdata = self.data[self.allrow]
-            transfer = self.FirstPageUi.transfer.currentText()
-            numcolum = len(self.data[0])
-            if(numcolum == 14):
-                year = currentdata[9]
-                p = self.path+"\ ".strip()+"sea.db"
+            transfer = currentdata[15]
 
-                conn = sqlite3.connect(p)
-                c = conn.cursor()
-                bookingno = currentdata[4]
+            if(transfer == "SI" or transfer == "SE"):
+                booking_no_sea = currentdata[4]
                 
-                c.execute("select * from seadatabase where Booking_No = ?", (bookingno,))
+                c.execute("select * from database where Booking_No_Sea = ?", (booking_no_sea,))
                 DATA = c.fetchall()
 
-                c.execute("select rowid from seadatabase where Booking_No = ?", (bookingno,))
+                c.execute("select rowid from database where Booking_No_Sea = ?", (booking_no_sea,))
                 ROWID = c.fetchone()
                 ROWID = int(ROWID[0])
 
-                ########################################
                 jobfileno = str(DATA[0][0])
                 self.FifthPage.FifthPageUi.jobfileno.setText(jobfileno)
                 jjno = str(DATA[0][1])
@@ -340,53 +504,47 @@ class FirstPage(QMainWindow):
                 self.FifthPage.FifthPageUi.shipper.setText(shipper)
                 consignee = str(DATA[0][3])
                 self.FifthPage.FifthPageUi.consignee.setText(consignee)
-                bookingno = str(DATA[0][4])
-                self.FifthPage.FifthPageUi.bookingno.setText(bookingno)
-                bl = str(DATA[0][5])
+                sea_booking_no = str(DATA[0][4])
+                self.FifthPage.FifthPageUi.bookingno.setText(sea_booking_no)
+                bl = str(DATA[0][7])
                 self.FifthPage.FifthPageUi.bl_alb.setText(bl)
-                origin = str(DATA[0][6])
+                origin = str(DATA[0][8])
                 self.FifthPage.FifthPageUi.origin.setText(origin)
-                destination = str(DATA[0][7])
+                destination = str(DATA[0][9])
                 self.FifthPage.FifthPageUi.destination.setText(destination)
-
-                ########################################
-                self.FifthPage.year = str(DATA[0][9])
-                self.FifthPage.month = str(DATA[0][10])
-                self.FifthPage.day = str(DATA[0][11])
-                self.FifthPage.job_no = str(DATA[0][12])
-                self.FifthPage.transfer = str(DATA[0][13])
+                
+                self.FifthPage.sea_booking_no = sea_booking_no
+                
+                self.FifthPage.year = DATA[0][11]
+                self.FifthPage.month = DATA[0][12]
+                self.FifthPage.day = DATA[0][13]
+                self.FifthPage.job_no = DATA[0][14]
+                self.FifthPage.transfer = DATA[0][15]
 
                 self.FifthPage.allcontainerdata = []
-                
+                self.FifthPage.FifthPageUi.listWidget.clear()
                 for i in range(len(DATA)):
-                    container_no = str(DATA[i][8])
+                    container_no = str(DATA[i][10])
                     self.FifthPage.FifthPageUi.listWidget.addItem(container_no)
                     self.FifthPage.allcontainerdata.append(ROWID)
                     ROWID = ROWID + 1
 
-                ########################################
-                self.FifthPage.allowdelete = True
-                ########################################
+                #self.FifthPage.allowdelete = True
                 self.close()
                 self.FifthPage.show()
                 
                 c.close()
-            
-            elif(numcolum == 12):
-                year = currentdata[7]
-                p = self.path+"\ ".strip()+"air.db"
-                
-                conn = sqlite3.connect(p)
-                c = conn.cursor()
-                awb = currentdata[4]
-                
-                c.execute("select * from airdatabase where AWB = ?", (awb,))
+
+            elif(transfer == "AI" or transfer == "AE"):
+                awb = currentdata[5]
+
+                c.execute("select * from database where AWB = ?", (awb,))
                 DATA = c.fetchall()
 
-                c.execute("select rowid from airdatabase where AWB = ?", (awb,))
+                c.execute("select rowid from database where AWB = ?", (awb,))
                 ROWID = c.fetchone()
                 ROWID = int(ROWID[0])
-                self.SixthPage.rowdata.append(ROWID)
+                #self.SixthPage.rowdata.append(ROWID)
                 #########################################
                 jobfileno = str(DATA[0][0])
                 self.SixthPage.SixthPageUi.jobfileno.setText(jobfileno)
@@ -396,39 +554,39 @@ class FirstPage(QMainWindow):
                 self.SixthPage.SixthPageUi.shipper.setText(shipper)
                 consignee = str(DATA[0][3])
                 self.SixthPage.SixthPageUi.consignee.setText(consignee)
-                awb = str(DATA[0][4])
+                awb = str(DATA[0][5])
                 self.SixthPage.SixthPageUi.awb.setText(awb)
-                origin = str(DATA[0][5])
+                origin = str(DATA[0][8])
                 self.SixthPage.SixthPageUi.origin.setText(origin)
-                destination = str(DATA[0][6])
+                destination = str(DATA[0][9])
                 self.SixthPage.SixthPageUi.destination.setText(destination)
                 #########################################
-                self.SixthPage.year = str(DATA[0][7])
-                self.SixthPage.month = str(DATA[0][8])
-                self.SixthPage.day = str(DATA[0][9])
-                self.SixthPage.job_no = str(DATA[0][10])
-                self.SixthPage.transfer = str(DATA[0][11])
+                self.SixthPage.awb = awb
+
+                self.SixthPage.year = DATA[0][11]
+                self.SixthPage.month = DATA[0][12]
+                self.SixthPage.day = DATA[0][13]
+                self.SixthPage.job_no = DATA[0][14]
+                self.SixthPage.transfer = DATA[0][15]
                 ########################################
-                self.SixthPage.allowdelete = True
+                #self.SixthPage.allowdelete = True
                 ########################################
                 self.close()
                 self.SixthPage.show()
                 c.close()
+                
             else:
-                year = currentdata[8]
-                p = self.path+"\ ".strip()+"truck.db"
+                
+                booking_no_truck = currentdata[6]
 
-                conn = sqlite3.connect(p)
-
-                c = conn.cursor()
-                bookingno = currentdata[4]
-
-                c.execute("select * from truckdatabase where Booking_No = ?", (bookingno,))
+                c.execute("select * from database where Booking_No_Truck = ?", (booking_no_truck,))
                 DATA = c.fetchall()
 
-                c.execute("select rowid from truckdatabase where Booking_No = ?", (bookingno,))
+                c.execute("select rowid from database where Booking_No_Truck = ?", (booking_no_truck,))
                 ROWID = c.fetchone()
                 ROWID = int(ROWID[0])
+
+                
                 ########################################
                 jobfileno = str(DATA[0][0])
                 self.SeventhPage.SeventhPageUi.jobfileno.setText(jobfileno)
@@ -438,22 +596,25 @@ class FirstPage(QMainWindow):
                 self.SeventhPage.SeventhPageUi.shipper.setText(shipper)
                 consignee = str(DATA[0][3])
                 self.SeventhPage.SeventhPageUi.consignee.setText(consignee)
-                bookingno = str(DATA[0][4])
-                self.SeventhPage.SeventhPageUi.bookingno.setText(bookingno)
-                origin = str(DATA[0][5])
+                truck_booking_no  = str(DATA[0][6])
+                self.SeventhPage.SeventhPageUi.bookingno.setText(truck_booking_no)
+                origin = str(DATA[0][8])
                 self.SeventhPage.SeventhPageUi.origin.setText(origin)
-                destination = str(DATA[0][6])
+                destination = str(DATA[0][9])
                 self.SeventhPage.SeventhPageUi.destination.setText(destination)
                 ########################################
-                self.SeventhPage.year = str(DATA[0][8])
-                self.SeventhPage.month = str(DATA[0][9])
-                self.SeventhPage.day = str(DATA[0][10])
-                self.SeventhPage.job_no = str(DATA[0][11])
-                self.SeventhPage.transfer = str(DATA[0][12])
-                self.SeventhPage.allcontainerdata = []
+                self.SeventhPage.truck_booking_no = truck_booking_no
+
+                self.SeventhPage.year = DATA[0][11]
+                self.SeventhPage.month = DATA[0][12]
+                self.SeventhPage.day = DATA[0][13]
+                self.SeventhPage.job_no = DATA[0][14]
+                self.SeventhPage.transfer = DATA[0][15]
                 
+                self.SeventhPage.allcontainerdata = []
+                self.SeventhPage.SeventhPageUi.listWidget.clear()
                 for i in range(len(DATA)):
-                    container_no = str(DATA[i][7])
+                    container_no = str(DATA[i][10])
                     self.SeventhPage.SeventhPageUi.listWidget.addItem(container_no)
                     self.SeventhPage.allcontainerdata.append(ROWID)
                     ROWID = ROWID + 1
@@ -464,36 +625,34 @@ class FirstPage(QMainWindow):
                 self.close()
                 self.SeventhPage.show()
                 c.close()
+
+       else:
+            QMessageBox.about(self, "Messages", "Please press Done for editing !!!")
+        
         
     def allinformation(self):
-        self.all = True
-
+        
+        self.done = False
+            
         self.openalldatabase()
         
         transfer = self.FirstPageUi.transfer.currentText()
         self.data = []
         
-        access1 = ["Job File No","JJ No","Shipper","Consignee","Booking No","BL/AWB","Origin","Destination","Container No","Transport"]
-        access2 = ["Job File No","JJ No","Shipper","Consignee","BL/AWB","Origin","Destination","Transport"]
-        access3 = ["Job File No","JJ No","Shipper","Consignee","Booking No","Origin","Destination","Container No","Transport"]
-
-        data = []
+        access1 = ["Job File No","JJ No","Shipper","Consignee","Sea Booking No","Sea BL No","Origin","Destination","Container No","Transport"]
+        access2 = ["Job File No","JJ No","Shipper","Consignee","Air AWB","Origin","Destination","Transport"]
+        access3 = ["Job File No","JJ No","Shipper","Consignee","Truck Booking No","Origin","Destination","Container No","Transport"]
         
+        data = []
         if(transfer == "SI" or transfer == "SE"):
-            pathtransfer = MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "sea.db"
+            pathtransfer = MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "database.db"
             conn = sqlite3.connect(pathtransfer)
             c = conn.cursor()
 
             if(transfer == "SI"):
-                if(self.sortinformation == "YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC"):
-                    c.execute("SELECT * FROM seadatabase WHERE Transfer='SI' ORDER BY " + self.sortinformation)
-                else:
-                    c.execute("SELECT * FROM seadatabase WHERE Transfer='SI' ORDER BY " + self.sortinformation + " ASC,YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC")
+                c.execute("SELECT * FROM database WHERE Transfer='SI' ORDER BY " + self.sortinformation)
             else:
-                if(self.sortinformation == "YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC"):
-                    c.execute("SELECT * FROM seadatabase WHERE Transfer='SE' ORDER BY " + self.sortinformation)
-                else:
-                    c.execute("SELECT * FROM seadatabase WHERE Transfer='SE' ORDER BY " + self.sortinformation + " ASC,YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC")
+                c.execute("SELECT * FROM database WHERE Transfer='SE' ORDER BY " + self.sortinformation)
             
 
             data = c.fetchall()
@@ -503,28 +662,29 @@ class FirstPage(QMainWindow):
             self.FirstPageUi.tableWidget.setRowCount(len(data))
             self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(access1)
 
+            
             for i in range(len(data)):
-                for j in range(len(access1)-1):
+                for j in range(5):
                     self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(data[i][j]))
-                    self.FirstPageUi.tableWidget.setItem(i, 9, QTableWidgetItem(transfer))
                     
+                self.FirstPageUi.tableWidget.setItem(i, 5, QTableWidgetItem(data[i][7]))
+                self.FirstPageUi.tableWidget.setItem(i, 6, QTableWidgetItem(data[i][8]))
+                self.FirstPageUi.tableWidget.setItem(i, 7, QTableWidgetItem(data[i][9]))
+                self.FirstPageUi.tableWidget.setItem(i, 8, QTableWidgetItem(data[i][10]))
+                self.FirstPageUi.tableWidget.setItem(i, 9, QTableWidgetItem(transfer))
+            
             c.close()
+            
         elif(transfer == "AI" or transfer == "AE"):
-            pathtransfer = MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "air.db"
+            pathtransfer = MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "database.db"
             conn = sqlite3.connect(pathtransfer)
             c = conn.cursor()
 
             if(transfer == "AI"):
-                if(self.sortinformation == "YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC"):
-                    c.execute(" SELECT * FROM airdatabase WHERE Transfer='AI' ORDER BY " + self.sortinformation)
-                else:
-                    c.execute(" SELECT * FROM airdatabase WHERE Transfer='AI' ORDER BY " + self.sortinformation + " ASC,YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC")
+                c.execute(" SELECT * FROM database WHERE Transfer='AI' ORDER BY " + self.sortinformation)    
             else:
-                if(self.sortinformation == "YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC"):
-                    c.execute(" SELECT * FROM airdatabase WHERE Transfer='AE' ORDER BY " + self.sortinformation)
-                else:
-                    c.execute(" SELECT * FROM airdatabase WHERE Transfer='AE' ORDER BY " + self.sortinformation + " ASC,YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC")
-
+                c.execute(" SELECT * FROM database WHERE Transfer='AE' ORDER BY " + self.sortinformation)
+               
             data = c.fetchall()
             self.data = data
              
@@ -533,20 +693,25 @@ class FirstPage(QMainWindow):
             self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(access2)
 
             for i in range(len(data)):
-                for j in range(len(access2)-1):
+                for j in range(4):
                     self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(data[i][j]))
-                    self.FirstPageUi.tableWidget.setItem(i, 7, QTableWidgetItem(transfer))
-
+                    
+                self.FirstPageUi.tableWidget.setItem(i, 4, QTableWidgetItem(data[i][5]))
+                self.FirstPageUi.tableWidget.setItem(i, 5, QTableWidgetItem(data[i][8]))
+                self.FirstPageUi.tableWidget.setItem(i, 6, QTableWidgetItem(data[i][9]))
+                self.FirstPageUi.tableWidget.setItem(i, 7, QTableWidgetItem(transfer))
+                
             c.close()
+            
         else:
-            pathtransfer = MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "truck.db"
+            pathtransfer = MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "database.db"
             conn = sqlite3.connect(pathtransfer)
             c = conn.cursor()
 
             if(self.sortinformation == "YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC"):
-                c.execute(" SELECT * FROM truckdatabase WHERE Transfer='TE' ORDER BY " + self.sortinformation)
+                c.execute(" SELECT * FROM database WHERE Transfer='TE' ORDER BY " + self.sortinformation)
             else:
-                c.execute(" SELECT * FROM truckdatabase WHERE Transfer='TE' ORDER BY " + self.sortinformation + ",YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC")
+                c.execute(" SELECT * FROM database WHERE Transfer='TE' ORDER BY " + self.sortinformation + ",YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC")
 
             data = c.fetchall()
             self.data = data
@@ -555,339 +720,170 @@ class FirstPage(QMainWindow):
             self.FirstPageUi.tableWidget.setRowCount(len(data))
             self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(access3)
 
+        
             for i in range(len(data)):
-                for j in range(len(access3)-1):
+                for j in range(4):
                     self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(data[i][j]))
-                    self.FirstPageUi.tableWidget.setItem(i, 7, QTableWidgetItem(transfer))
+                    
+                self.FirstPageUi.tableWidget.setItem(i, 4, QTableWidgetItem(data[i][6]))
+                self.FirstPageUi.tableWidget.setItem(i, 5, QTableWidgetItem(data[i][8]))
+                self.FirstPageUi.tableWidget.setItem(i, 6, QTableWidgetItem(data[i][9]))
+                self.FirstPageUi.tableWidget.setItem(i, 7, QTableWidgetItem(data[i][10]))
+                self.FirstPageUi.tableWidget.setItem(i, 8, QTableWidgetItem(transfer))
                 
             c.close()
 
         self.sortinformation = "YEAR DESC,MONTH DESC,DAY DESC,JOB_NUMBER ASC"
 
-        """
-
-        current = 0
-            pathyear = MAINPATH+"\ ".strip()+year
-            if(transfer == "SI" or transfer == "SE"):
-                self.FirstPageUi.tableWidget.setColumnCount(len(access1))
-                self.FirstPageUi.tableWidget.setRowCount(SUM)
-                self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(access1)
-            
-                pathtransfer = MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "sea.db"
-                conn = sqlite3.connect(pathtransfer)
-                c = conn.cursor()
-
-                if(transfer == "SI"):
-                    c.execute(" SELECT * FROM seadatabase WHERE Transfer='SI' ORDER BY " + self.sortinformation)
-                else:
-                    c.execute(" SELECT * FROM seadatabase WHERE Transfer='SE' ORDER BY " + self.sortinformation)
-                
-                data = c.fetchall()
-                data.reverse()
-                
-                for i in range(len(data)):
-                    for j in range(len(access1)-1):
-                        self.FirstPageUi.tableWidget.setItem(curr+i,j, QTableWidgetItem(data[i][j]))
-
-                for i in range(len(data)):
-                    self.FirstPageUi.tableWidget.setItem(curr+i, 9, QTableWidgetItem(transfer))
-
-                curr = curr + len(data)
-                
-                for d in data:
-                    self.data.append(d)
-                    
-                c.close()                                                           
-                                                    
-            elif(transfer == "AI" or transfer == "AE"):
-                self.FirstPageUi.tableWidget.setColumnCount(len(access2))
-                self.FirstPageUi.tableWidget.setRowCount(SUM)
-                self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(access2)
-
-                
-                pathtransfer = MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "air.db"
-                conn = sqlite3.connect(pathtransfer)
-                c = conn.cursor()
-
-                if(transfer == "AI"):
-                    c.execute(" SELECT * FROM airdatabase WHERE Transfer='AI' ORDER BY " + self.sortinformation)
-                else:
-                    c.execute(" SELECT * FROM airdatabase WHERE Transfer='AE' ORDER BY " + self.sortinformation)
-                
-                data = c.fetchall()
-                data.reverse()
-            
-                for i in range(len(data)):
-                    for j in range(len(access2)-1):
-                        self.FirstPageUi.tableWidget.setItem(curr+i,j, QTableWidgetItem(data[i][j]))
-
-                for i in range(len(data)):
-                    self.FirstPageUi.tableWidget.setItem(curr+i, 7, QTableWidgetItem(transfer))
-
-                curr = curr + len(data)
-                
-                for d in data:
-                    self.data.append(d)
-                
-                c.close()
-            
-            else:
-                self.FirstPageUi.tableWidget.setColumnCount(len(access3))
-                self.FirstPageUi.tableWidget.setRowCount(SUM)
-                self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(access3)
-                
-                pathtransfer = MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "truck.db"
-                conn = sqlite3.connect(pathtransfer)
-                c = conn.cursor()
-                c.execute(" SELECT * FROM truckdatabase WHERE Transfer='TE' ORDER BY " + self.sortinformation)
-                
-                data = c.fetchall()
-                data.reverse()
-
-                for i in range(len(data)):
-                    for j in range(len(access3)-1):
-                        self.FirstPageUi.tableWidget.setItem(curr+i,j, QTableWidgetItem(data[i][j]))
-
-                for i in range(len(data)):
-                    self.FirstPageUi.tableWidget.setItem(curr+i, 8, QTableWidgetItem(transfer))
-
-                curr = curr + len(data)
-
-                for d in data:
-                    self.data.append(d)
-                
-                c.close()
-        """
         
     def openalldatabase(self):
-        conn1 = sqlite3.connect(MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "sea.db")
-        c1 = conn1.cursor()
-        c1.execute("CREATE TABLE IF NOT EXISTS seadatabase"+
-              "(Job_File_No TEXT, JJ_No TEXT, Shipper TEXT, Consignee TEXT,Booking_No TEXT, BL TEXT, ORIGIN TEXT, DESTINATION TEXT, CONTAINER_NO TEXT,"+
+        conn = sqlite3.connect(MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "database.db")
+        c = conn.cursor()
+        c.execute("CREATE TABLE IF NOT EXISTS database"+
+              "(Job_File_No TEXT, JJ_No TEXT, Shipper TEXT, Consignee TEXT,Booking_No_Sea TEXT, AWB TEXT, Booking_No_Truck TEXT, BL TEXT , ORIGIN TEXT, DESTINATION TEXT, CONTAINER_NO TEXT,"+
               "YEAR TEXT, MONTH TEXT, DAY TEXT, JOB_NUMBER TEXT, Transfer TEXT)")
-        c1.close()
-        
-        conn2 = sqlite3.connect(MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "air.db")
-        c2 = conn2.cursor()
-        c2.execute("CREATE TABLE IF NOT EXISTS airdatabase"+
-              "(Job_File_No TEXT, JJ_No TEXT, Shipper TEXT, Consignee TEXT,AWB TEXT, ORIGIN TEXT, DESTINATION TEXT,"+
-              "YEAR TEXT, MONTH TEXT, DAY TEXT, JOB_NUMBER TEXT, Transfer TEXT,"+
-                      "UNIQUE(Job_File_No, JJ_No, Shipper, Consignee, AWB, ORIGIN, DESTINATION))")
-        c2.close()
-        
-        conn3 = sqlite3.connect(MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "truck.db")
-        c3 = conn3.cursor()
-        c3.execute("CREATE TABLE IF NOT EXISTS truckdatabase"+
-              "(Job_File_No TEXT,JJ_No TEXT,Shipper TEXT,Consignee TEXT,Booking_No TEXT,ORIGIN TEXT,DESTINATION TEXT,CONTAINER_NO TEXT,"+
-              "YEAR TEXT,MONTH TEXT,DAY TEXT,JOB_NUMBER TEXT,Transfer TEXT)")
-        c3.close()
+        c.close()
+
+    def keyPressEvent(self, e):
+        if (e.modifiers() & QtCore.Qt.ControlModifier):
+            selected = self.FirstPageUi.tableWidget.selectedRanges()
+
+            
+            if e.key() == QtCore.Qt.Key_V:
+                print("hdhgfhf")
+                first_row = selected[0].topRow()
+                first_col = selected[0].leftColumn()
+
+                for r, row in enumerate(self.clip.text().split('\n')):
+                    for c, text in enumerate(row.split('\t')):
+                        self.table.setItem(first_row+r, first_col+c, QtGui.QTableWidgetItem(text))
+
+            elif e.key() == QtCore.Qt.Key_C:
+                f = open("note.txt","w+")
+
+                s = ""
+                for r in range(selected[0].topRow(),selected[0].bottomRow()+1):
+                    for c in range(selected[0].leftColumn(),selected[0].rightColumn()+1):
+                        f.write(self.data[r][c])
+                        f.write("\n")
+
+                        s = s + self.data[r][c]
+                        s = s + "\n"
+
+
+                self.clip.setText(s)
+                os.startfile('note.txt')
+                f.close() 
 
     def doneclick(self):
-        self.data = []
-        self.all = False
-        get_all_data = []
-        
-        self.FirstPageUi.tableWidget.setColumnCount(0)
-        self.FirstPageUi.tableWidget.setRowCount(0)
+        self.done = True
+        self.changeText(0)
+        if (len(self.FirstPageUi.lineEdit.text()) == 0):
+            access = ["Job File No","JJ No","Shipper","Consignee","Sea Booking No","AWB","Truck Booking No","Sea BL No","Origin",
+                      "Destination","Container No","Transport"]
 
-        access1 = ["Job File No","JJ No","Shipper","Consignee","Booking No","BL/AWB","Origin","Destination","Container No"]
-        access2 = ["Job File No","JJ No","Shipper","Consignee","BL/AWB","Origin","Destination"]
-        access3 = ["Job File No","JJ No","Shipper","Consignee","Booking No","Origin","Destination","Container No"]
-
-        booking_Number = self.FirstPageUi.bookingNo.currentText()
-        booking_Text = self.FirstPageUi.lineEdit.text()
-
-        pathyear = MAINPATH+"\ ".strip()+"Job Database"
-
-        show = True
-        ###############################
-        if(show == True and len(booking_Text) != 0):
-            pathtransfer = pathyear+"\ ".strip()+"sea.db"
+            pathtransfer = MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "database.db"
             conn = sqlite3.connect(pathtransfer)
             c = conn.cursor()
+            c.execute(" SELECT * FROM database ORDER BY YEAR DESC,MONTH DESC,DAY DESC,JJ_No ASC")
+            data = c.fetchall()
 
-            
-            if(booking_Number == "Booking No"):
-                c.execute('SELECT * FROM seadatabase WHERE Booking_No=?', (booking_Text,))
-                get_all_data = c.fetchall()
-                
-            if(booking_Number == "Container No"):
-                c.execute('SELECT * FROM seadatabase WHERE CONTAINER_No=?', (booking_Text,))
-                get_all_data = c.fetchall()
-                
-            if(booking_Number == "BL No"):
-                c.execute('SELECT * FROM seadatabase WHERE BL=?', (booking_Text,))
-                get_all_data = c.fetchall()
-
-            if(len(get_all_data) != 0):
-                self.FirstPageUi.tableWidget.setColumnCount(len(access1))
-                self.FirstPageUi.tableWidget.setRowCount(len(get_all_data))
-                self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(access1)
-                show = False
-
-            for i in range(len(get_all_data)):
-                for j in range(len(access1)):
-                    self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(get_all_data[i][j]))
-
-            if(len(get_all_data) != 0):
-                show = False
-                
-            c.close()
-        ###############################
-        
-        if(show == True and len(booking_Text) != 0):
-            pathtransfer = pathyear+"\ ".strip()+"air.db"
-            conn = sqlite3.connect(pathtransfer)
-            c = conn.cursor()
-
-            if(booking_Number == "AWB No"):
-                c.execute('SELECT * FROM airdatabase WHERE AWB=?', (booking_Text,))
-                get_all_data = c.fetchall()
-
-            if(len(get_all_data) != 0):
-                self.FirstPageUi.tableWidget.setColumnCount(len(access2))
-                self.FirstPageUi.tableWidget.setRowCount(len(get_all_data))
-                self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(access2)
-                show = False
-
-            for i in range(len(get_all_data)):
-                for j in range(len(access2)):
-                    self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(get_all_data[i][j]))
-                
-            c.close()
-        ###############################
-        if(show == True and len(booking_Text) != 0):
-            pathtransfer = pathyear+"\ ".strip()+"truck.db"
-            conn = sqlite3.connect(pathtransfer)
-            c = conn.cursor()
-                        
-            if(booking_Number == "Booking No"):
-                c.execute('SELECT * FROM truckdatabase WHERE Booking_No=?', (booking_Text,))
-                get_all_data = c.fetchall()
-                        
-            if(booking_Number == "Container No"):
-                c.execute('SELECT * FROM truckdatabase WHERE CONTAINER_No=?', (booking_Text,))
-                get_all_data = c.fetchall()
-
-            if(len(get_all_data) != 0):
-                self.FirstPageUi.tableWidget.setColumnCount(len(access3))
-                self.FirstPageUi.tableWidget.setRowCount(len(get_all_data))
-                self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(access3)
-                show = False
-            
-            for i in range(len(get_all_data)):
-                for j in range(len(access3)):
-                    self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(get_all_data[i][j]))
-                    
-            c.close()
-        ###############################
-        for d in get_all_data:
-            self.data.append(d)
-
-        self.num_column = 0
-        if(len(self.data) != 0):
-            self.num_column = len(self.data[0])
-
-        #if(self.num_column == 14):
-            #for i in range(len(self.data)):
-                #for j in range(len(access)):
-                    #z = sort_dict1[access[j]]
-                    #self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(self.data[i][z]))
-
-        self.FirstPageUi.tableWidget.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
-
-        """
-        if(self.num_column == 12):
-            for i in range(len(self.data)):
-                for j in range(len(access)):
-                    z = sort_dict2[access[j]]
-                    self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(self.data[i][z]))
-        
-        if(self.num_column == 13):
-            for i in range(len(self.data)):
-                for j in range(len(access)):
-                    z = sort_dict3[access[j]]
-                    self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(self.data[i][z]))
-
-        """
-
-
-        """
-        access = []
-
-        self.num_column = 0
-        
-        if(len(self.data) != 0):
-            self.num_column = len(self.data[0])
-
-        
-        for i in range(self.FirstPageUi.sort.count()):
-            if(self.FirstPageUi.sort.itemChecked(i)):
-                if(self.num_column == 14):
-                    access.append(self.FirstPageUi.sort.itemText(i))
-                if(self.num_column == 12):
-                    if(self.FirstPageUi.sort.itemText(i) != "Booking No" and self.FirstPageUi.sort.itemText(i) != "Container No"):
-                        access.append(self.FirstPageUi.sort.itemText(i))
-                if(self.num_column == 13):
-                    if(self.FirstPageUi.sort.itemText(i) != "BL/AWB"):
-                        access.append(self.FirstPageUi.sort.itemText(i))
-       
-        if(len(access) != 0):
             self.FirstPageUi.tableWidget.setColumnCount(len(access))
-            self.FirstPageUi.tableWidget.setRowCount(len(self.data))
+            self.FirstPageUi.tableWidget.setRowCount(len(data))
             self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(access)
 
-        sort_dict1 = {"Job File No":0,"JJ No":1,"Shipper":2,"Consignee":3,"Booking No":4,"BL/AWB":5,"Origin":6,"Destination":7,"Container No":8}
-        sort_dict2 = {"Job File No":0,"JJ No":1,"Shipper":2,"Consignee":3,"BL/AWB":4,"Origin":5,"Destination":6}
-        sort_dict3 = {"Job File No":0,"JJ No":1,"Shipper":2,"Consignee":3,"Booking No":4,"Origin":5,"Destination":6,"Container No":7}
+            for i in range(len(data)):
+                for j in range(11):
+                    self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(data[i][j]))
+                    self.FirstPageUi.tableWidget.setItem(i,11, QTableWidgetItem(data[i][15]))
 
-        if(self.num_column == 14):
-            for i in range(len(self.data)):
-                for j in range(len(access)):
-                    z = sort_dict1[access[j]]
-                    self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(self.data[i][z]))
-        
-        if(self.num_column == 12):
-            for i in range(len(self.data)):
-                for j in range(len(access)):
-                    z = sort_dict2[access[j]]
-                    self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(self.data[i][z]))
-        
-        if(self.num_column == 13):
-            for i in range(len(self.data)):
-                for j in range(len(access)):
-                    z = sort_dict3[access[j]]
-                    self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(self.data[i][z]))
+            c.close()
+            self.data = data
+        else:
+            access = ["Job File No","JJ No","Shipper","Consignee","Sea Booking No","AWB","Truck Booking No","Sea BL No","Origin",
+                      "Destination","Container No","Transport"]
+
+            booking_Number = self.FirstPageUi.bookingNo.currentText()
+            booking_Text = self.FirstPageUi.lineEdit.text()
+
+            pathtransfer = MAINPATH +"\ ".strip()+ "Job Database" +"\ ".strip() + "database.db"
+            conn = sqlite3.connect(pathtransfer)
+            c = conn.cursor()
+
+            get_all_data = []
+
+            if(booking_Number == "Job File No"):
+                c.execute('SELECT * FROM database WHERE Job_File_No=?', (booking_Text,))
+                data = c.fetchall()
+                get_all_data =  get_all_data + data
+                
+            if(booking_Number == "JJ No"):
+                c.execute('SELECT * FROM database WHERE JJ_No=?', (booking_Text,))
+                data = c.fetchall()
+                get_all_data =  get_all_data + data
+                
+            if(booking_Number == "Sea/Truck Booking No"):
+                c.execute('SELECT * FROM database WHERE Booking_No_Sea=?', (booking_Text,))
+                data = c.fetchall()
+                get_all_data =  get_all_data + data
+
+            if(booking_Number == "Sea/Truck Booking No"):
+                c.execute('SELECT * FROM database WHERE Booking_No_Truck=?', (booking_Text,))
+                data = c.fetchall()
+                get_all_data =  get_all_data + data
+
+            if(booking_Number == "Container No"):
+                c.execute('SELECT * FROM database WHERE CONTAINER_No=?', (booking_Text,))
+                data = c.fetchall()
+                get_all_data =  get_all_data + data
+
+            if(booking_Number == "Sea BL No"):
+                c.execute('SELECT * FROM database WHERE BL=?', (booking_Text,))
+                data = c.fetchall()
+                get_all_data =  get_all_data + data
+
+            if(booking_Number == "AWB No"):
+                c.execute('SELECT * FROM database WHERE AWB=?', (booking_Text,))
+                data = c.fetchall()
+                get_all_data =  get_all_data + data
+
+           
+            self.FirstPageUi.tableWidget.setColumnCount(len(access))
+            self.FirstPageUi.tableWidget.setRowCount(len(get_all_data))
+            self.FirstPageUi.tableWidget.setHorizontalHeaderLabels(access)
+
+            
+            for i in range(len(get_all_data)):
+                for j in range(11):
+                    self.FirstPageUi.tableWidget.setItem(i,j, QTableWidgetItem(get_all_data[i][j]))
+                    self.FirstPageUi.tableWidget.setItem(i,11, QTableWidgetItem(get_all_data[i][15]))
                     
-        self.FirstPageUi.tableWidget.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
-        """
+            c.close()
+            self.data = get_all_data
+
+            if(len(get_all_data) == 0):
+                QMessageBox.about(self, "Messages", booking_Number + " = " + booking_Text + " not existed !!!")
+
+        #self.FirstPageUi.tableWidget.setEditTriggers(QtWidgets.QTableWidget.NoEditTriggers)
+
+        
 
     def singleclick(self, row, column):
         self.FirstPageUi.tableWidget.selectRow(row)
         self.allrow = row
 
     def doubleclick(self, row, column):
-        if(self.all == True and len(self.data) != 0):
-            num_column_all = len(self.data[0])
-            if(num_column_all == 14):
-                os.startfile(self.path+"\ ".strip()+self.data[row][9]+"\ ".strip()+self.data[row][10]+
-                         "\ ".strip()+self.data[row][11]+"\ ".strip()+"sea"+ "\ ".strip()+self.data[row][12])
-            if(num_column_all == 12 and len(self.data) != 0):
-                os.startfile(self.path+"\ ".strip()+self.data[row][7]+"\ ".strip()+self.data[row][8]+
-                         "\ ".strip()+self.data[row][9] +"\ ".strip()+"air"+ "\ ".strip()+self.data[row][10] )
-            if(num_column_all == 13 and len(self.data) != 0):
-                os.startfile(self.path+"\ ".strip()+self.data[row][8]+"\ ".strip()+self.data[row][9]+
-                         "\ ".strip()+self.data[row][10]+"\ ".strip()+"truck"+ "\ ".strip()+self.data[row][11] )
-
-        if(self.num_column == 14 and len(self.data) != 0):
-            os.startfile(self.path+"\ ".strip()+self.data[row][9]+"\ ".strip()+self.data[row][10]+
-                         "\ ".strip()+self.data[row][11]+"\ ".strip()+"sea"+ "\ ".strip()+self.data[row][12])
-        if(self.num_column == 12 and len(self.data) != 0):
-            os.startfile(self.path+"\ ".strip()+self.data[row][7]+"\ ".strip()+self.data[row][8]+
-                         "\ ".strip()+self.data[row][9]+"\ ".strip()+"air"+ "\ ".strip()+self.data[row][10] )
-        if(self.num_column == 13 and len(self.data) != 0):
-            os.startfile(self.path+"\ ".strip()+self.data[row][8]+"\ ".strip()+self.data[row][9]+
-                         "\ ".strip()+self.data[row][10]+"\ ".strip()+"truck"+ "\ ".strip()+self.data[row][11] )
+        
+        if(self.data[row][15] == "SI" or self.data[row][15] == "SE"):
+            os.startfile(self.path+"\ ".strip()+self.data[row][11]+"\ ".strip()+self.data[row][12]+
+                             "\ ".strip()+self.data[row][13]+"\ ".strip()+"sea"+ "\ ".strip()+self.data[row][14])
+        elif(self.data[row][15] == "AI" or self.data[row][15] == "AE"):
+            os.startfile(self.path+"\ ".strip()+self.data[row][11]+"\ ".strip()+self.data[row][12]+
+                             "\ ".strip()+self.data[row][13]+"\ ".strip()+"air"+ "\ ".strip()+self.data[row][14])
+        else:
+            os.startfile(self.path+"\ ".strip()+self.data[row][11]+"\ ".strip()+self.data[row][12]+
+                             "\ ".strip()+self.data[row][13]+"\ ".strip()+"truck"+ "\ ".strip()+self.data[row][14])
+       
         
 class SecondPage(QMainWindow):
     def __init__(self):
@@ -916,7 +912,9 @@ class SecondPage(QMainWindow):
 
     def upload(self):
         transfer = str(self.SecondPageUi.transfer.currentText())
+        
         if((transfer == "SI" or transfer == "SE") and self.donetoupload == True):
+            
             year = int(str(datetime.datetime.now())[0:4])
             month = int(str(datetime.datetime.now())[5:7])
             day = int(str(datetime.datetime.now())[8:10])
@@ -930,8 +928,6 @@ class SecondPage(QMainWindow):
 
             if(find_year == False):
                 os.mkdir(cur_find_year)
-
-            
             ##########################
             find_month = False
             cur_find_month = cur_find_year + "\ ".strip() + str(month)
@@ -956,17 +952,11 @@ class SecondPage(QMainWindow):
             if not os.path.exists(cur_find_day):
                 os.mkdir(cur_find_day)
 
-            
             ##########################
             #creating database for ship if not exists
-            conn = sqlite3.connect(self.path+ "\ ".strip() +"sea.db")
+            conn = sqlite3.connect(self.path+ "\ ".strip() +"database.db")
             c = conn.cursor()
 
-            c.execute("CREATE TABLE IF NOT EXISTS seadatabase"+
-              "(Job_File_No TEXT, JJ_No TEXT, Shipper TEXT, Consignee TEXT,Booking_No TEXT, BL TEXT, ORIGIN TEXT, DESTINATION TEXT, CONTAINER_NO TEXT,"+
-              "YEAR TEXT, MONTH TEXT, DAY TEXT, JOB_NUMBER TEXT, Transfer TEXT)")
-
-            
             jobfileno = str(self.SecondPageUi.jobfileno.text())
             jjno = str(self.SecondPageUi.jjno.text())
             shipper = str(self.SecondPageUi.shipper.text())
@@ -982,9 +972,19 @@ class SecondPage(QMainWindow):
                buttonReply = QMessageBox.question(self, 'Message !!!', "Form is not completed! Want to upload?", QMessageBox.Yes | QMessageBox.No)
                if buttonReply == QMessageBox.No:
                    upload = False
+               if(len(bookingno)==0):
+                   QMessageBox.about(self, "Warning!!!", "Please insert Sea Booking No.")
+                   upload = False
 
-            
             if(upload == True):
+                if (len(jobfileno)==0): jobfileno = "-"
+                if (len(jjno)==0): jjno = "-"
+                if (len(shipper)==0): shipper = "-"
+                if (len(consignee)==0): consignee = "-"
+                if (len(bl_alb)==0): bl_alb = "-"
+                if (len(origin)==0): origin = "-"
+                if (len(destination)==0): destination = "-"
+
                 length = len(os.listdir(cur_find_day))
                 list_int = [int(i) for i in os.listdir(cur_find_day)]
                 list_int.sort()
@@ -997,37 +997,46 @@ class SecondPage(QMainWindow):
                      
                 jj = jj + 1
                 ##############################
+
                 make = []
-                c.execute("select rowid from seadatabase where Booking_No = ?", (bookingno,))
+                c.execute("select rowid from database where Booking_No_Sea = ?", (bookingno,))
                 row = c.fetchone()
-                if(row):
-                    make.append(False)
-                        
-                c.execute("select rowid from seadatabase where BL = ?", (bl_alb,))
-                row = c.fetchone()
+
                 if(row):
                     make.append(False)
 
-            
                 if False not in make:
                     os.mkdir(cur_find_day + "\ ".strip() + str(jj))
                     os.startfile(cur_find_day + "\ ".strip() + str(jj))
-                    
                     for i in range(self.SecondPageUi.listWidget.count()):
                         container_no = self.SecondPageUi.listWidget.item(i).text()
-                        item = (jobfileno,jjno,shipper,consignee,bookingno,bl_alb,origin,destination,container_no,year,month,day,jj,transfer,)
-                        c.execute("INSERT INTO seadatabase (Job_File_No,JJ_No,Shipper,Consignee,Booking_No,BL,ORIGIN,DESTINATION,CONTAINER_NO,"+
+                        if (len(container_no)==0): container_no = "-"
+                        item = (jobfileno,jjno,shipper,consignee,bookingno,"-","-",bl_alb,origin,destination,container_no,year,month,day,jj,transfer,)
+                        c.execute("INSERT INTO database (Job_File_No,JJ_No,Shipper,Consignee,Booking_No_Sea,AWB,Booking_No_Truck,BL,ORIGIN,DESTINATION,CONTAINER_NO,"+
                                   "YEAR,MONTH,DAY,JOB_NUMBER,Transfer) "+
-                                  "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);", item)
+                                  "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);", item)
+                        conn.commit()
+                        
+                    if(self.SecondPageUi.listWidget.count() == 0):
+                        container_no = "-"
+                        item = (jobfileno,jjno,shipper,consignee,bookingno,"-","-",bl_alb,origin,destination,container_no,year,month,day,jj,transfer,)
+                        c.execute("INSERT INTO database (Job_File_No,JJ_No,Shipper,Consignee,Booking_No_Sea,AWB,Booking_No_Truck,BL,ORIGIN,DESTINATION,CONTAINER_NO,"+
+                                  "YEAR,MONTH,DAY,JOB_NUMBER,Transfer) "+
+                                  "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);", item)
                         conn.commit()
                 else:
                     QMessageBox.about(self, "Warning", "This information already exists!!!")
 
+            
+            
                 self.donetoupload = False
 
                 c.close()
                 conn.close()
-                
+        else:
+            QMessageBox.about(self, "Warning", "Please press DONE button!!!")
+            
+        
     def addlist(self):
         if(len(self.SecondPageUi.containerno.text()) != 0):
             self.SecondPageUi.listWidget.addItem(self.SecondPageUi.containerno.text())
@@ -1120,29 +1129,36 @@ class ThirdPage(QMainWindow):
             ##########################
             
             #creating database for ship if not exists
-            conn = sqlite3.connect(self.path+ "\ ".strip() +"air.db")
+            conn = sqlite3.connect(self.path+ "\ ".strip() +"database.db")
             c = conn.cursor()
-            
-            c.execute("CREATE TABLE IF NOT EXISTS airdatabase"+
-              "(Job_File_No TEXT, JJ_No TEXT, Shipper TEXT, Consignee TEXT,AWB TEXT, ORIGIN TEXT, DESTINATION TEXT,"+
-              "YEAR TEXT, MONTH TEXT, DAY TEXT, JOB_NUMBER TEXT, Transfer TEXT)")
 
             jobfileno = str(self.ThirdPageUi.jobfileno.text())
             jjno = str(self.ThirdPageUi.jjno.text())
             shipper = str(self.ThirdPageUi.shipper.text())
             consignee = str(self.ThirdPageUi.consignee.text())
-            bl_alb = str(self.ThirdPageUi.awb.text())
+            awb = str(self.ThirdPageUi.awb.text())
             origin = str(self.ThirdPageUi.origin.text())
             destination = str(self.ThirdPageUi.destination.text())
+            
             ############################
             upload = True
-            if(len(jobfileno)==0 or len(jjno)==0 or len(shipper)==0 or len(consignee)==0 or len(bl_alb)==0
+            if(len(jobfileno)==0 or len(jjno)==0 or len(shipper)==0 or len(consignee)==0 or len(awb)==0
                or len(origin)==0 or len(destination)==0):
                buttonReply = QMessageBox.question(self, 'Message !!!', "Form is not completed! Want to upload?", QMessageBox.Yes | QMessageBox.No)
                if buttonReply == QMessageBox.No:
                    upload = False
+               if(len(awb)==0):
+                   QMessageBox.about(self, "Warning!!!", "Please insert air waybill.")
+                   upload = False
 
             if(upload == True):
+                if (len(jobfileno)==0): jobfileno = "-"
+                if (len(jjno)==0): jjno = "-"
+                if (len(shipper)==0): shipper = "-"
+                if (len(consignee)==0): consignee = "-"
+                if (len(origin)==0): origin = "-"
+                if (len(destination)==0): destination = "-"
+                
                 length = len(os.listdir(cur_find_day))
                 list_int = [int(i) for i in os.listdir(cur_find_day)]
                 list_int.sort()
@@ -1157,8 +1173,9 @@ class ThirdPage(QMainWindow):
                 ##############################
                 make = []
                 
-                c.execute("select rowid from airdatabase where AWB = ?", (bl_alb,))
+                c.execute("select rowid from database where AWB = ?", (awb,))
                 row = c.fetchone()
+                
                 if(row):
                     make.append(False)
 
@@ -1167,19 +1184,21 @@ class ThirdPage(QMainWindow):
                     os.mkdir(cur_find_day + "\ ".strip() + str(jj))
                     os.startfile(cur_find_day + "\ ".strip() + str(jj))
                     
-                    item = (jobfileno,jjno,shipper,consignee,bl_alb,origin,destination,year,month,day,jj,transfer,)
-                    c.execute("INSERT INTO airdatabase (Job_File_No,JJ_No,Shipper,Consignee,AWB,ORIGIN,DESTINATION,"+
-                        "YEAR, MONTH, DAY, JOB_NUMBER, Transfer) "+
-                        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?);", item)
-                       
+                    item = (jobfileno,jjno,shipper,consignee,"-",awb,"-","-",origin,destination,"-",year,month,day,jj,transfer,)
+                    c.execute("INSERT INTO database (Job_File_No,JJ_No,Shipper,Consignee,Booking_No_Sea,AWB,Booking_No_Truck,BL,ORIGIN,DESTINATION,CONTAINER_NO,"+
+                                  "YEAR,MONTH,DAY,JOB_NUMBER,Transfer) "+
+                                  "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);", item)
                     conn.commit()
-            
+
                 else:
                     QMessageBox.about(self, "Warning", "This information already exists!!!")
 
                 c.close()
                 conn.close()
                 self.donetoupload = False
+
+        else:
+            QMessageBox.about(self, "Warning", "Please press DONE button!!!")
                 
     ##########################
     def deleteitems(self):
@@ -1220,7 +1239,6 @@ class FourthPage(QMainWindow):
             year = int(str(datetime.datetime.now())[0:4])
             month = int(str(datetime.datetime.now())[5:7])
             day = int(str(datetime.datetime.now())[8:10])
-
             ##########################
             find_year = False
             cur_find_year = self.path + "\ ".strip() + str(year)
@@ -1255,12 +1273,8 @@ class FourthPage(QMainWindow):
                 os.mkdir(cur_find_day)
             ##########################
             #creating database for ship if not exists
-            conn = sqlite3.connect(self.path+ "\ ".strip() +"truck.db")
+            conn = sqlite3.connect(self.path+ "\ ".strip() +"database.db")
             c = conn.cursor()
-
-            c.execute("CREATE TABLE IF NOT EXISTS truckdatabase"+
-              "(Job_File_No TEXT,JJ_No TEXT,Shipper TEXT,Consignee TEXT,Booking_No TEXT,ORIGIN TEXT,DESTINATION TEXT,CONTAINER_NO TEXT,"+
-              "YEAR TEXT,MONTH TEXT,DAY TEXT,JOB_NUMBER TEXT,Transfer TEXT)")
 
             jobfileno = str(self.FourthPageUi.jobfileno.text())
             jjno = str(self.FourthPageUi.jjno.text())
@@ -1276,13 +1290,22 @@ class FourthPage(QMainWindow):
                buttonReply = QMessageBox.question(self, 'Message !!!', "Form is not completed! Want to upload?", QMessageBox.Yes | QMessageBox.No)
                if buttonReply == QMessageBox.No:
                    upload = False
+               if(len(bookingno)==0):
+                   QMessageBox.about(self, "Warning!!!", "Please insert Truck Booking No.")
+                   upload = False
             
             if(upload == True):
+                if (len(jobfileno)==0): jobfileno = "-"
+                if (len(jjno)==0): jjno = "-"
+                if (len(shipper)==0): shipper = "-"
+                if (len(consignee)==0): consignee = "-"
+                if (len(origin)==0): origin = "-"
+                if (len(destination)==0): destination = "-"
+                
                 length = len(os.listdir(cur_find_day))
                 list_int = [int(i) for i in os.listdir(cur_find_day)]
                 list_int.sort()
 
-                
                 jj = 0
                 if(len(list_int) == 0):
                     jj = 0
@@ -1293,33 +1316,45 @@ class FourthPage(QMainWindow):
                 ##############################
                 make = []
                 
-                c.execute("select rowid from truckdatabase where Booking_No = ?", (bookingno,))
+                c.execute("select rowid from database where Booking_No_Truck = ?", (bookingno,))
                 row = c.fetchone()
+
                 if(row):
                     make.append(False)
-                
+
                 if False not in make:
                     os.mkdir(cur_find_day + "\ ".strip() + str(jj))
                     os.startfile(cur_find_day + "\ ".strip() + str(jj))
-                    
+
                     for i in range(self.FourthPageUi.listWidget.count()):
-                        container_No = self.FourthPageUi.listWidget.item(i).text()
+                        container_no = self.FourthPageUi.listWidget.item(i).text()
                         
-                        item = (jobfileno,jjno,shipper,consignee,bookingno,origin,destination,container_No,year,month,day,jj,transfer,)
-                        c.execute("INSERT INTO truckdatabase (Job_File_No,JJ_No,Shipper,Consignee,Booking_No,ORIGIN,DESTINATION,CONTAINER_NO,"+
-                              "YEAR, MONTH, DAY, JOB_NUMBER,Transfer) "+
-                              "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);", item)
+                        item = (jobfileno,jjno,shipper,consignee,"-","-",bookingno,"-",origin,destination,container_no,year,month,day,jj,transfer,)
+                        c.execute("INSERT INTO database (Job_File_No,JJ_No,Shipper,Consignee,Booking_No_Sea,AWB,Booking_No_Truck,BL,ORIGIN,DESTINATION,CONTAINER_NO,"+
+                                  "YEAR,MONTH,DAY,JOB_NUMBER,Transfer) "+
+                                  "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);", item)
+                        
                         conn.commit()
-            
+                        
+                    if(self.FourthPageUi.listWidget.count() == 0):
+                        container_no = "-"
+                    
+                        item = (jobfileno,jjno,shipper,consignee,"-","-",bookingno,"-",origin,destination,container_no,year,month,day,jj,transfer,)
+                        c.execute("INSERT INTO database (Job_File_No,JJ_No,Shipper,Consignee,Booking_No_Sea,AWB,Booking_No_Truck,BL,ORIGIN,DESTINATION,CONTAINER_NO,"+
+                                  "YEAR,MONTH,DAY,JOB_NUMBER,Transfer) "+
+                                  "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);", item)
+                        conn.commit()
+                        
                 else:
                     QMessageBox.about(self, "Warning", "This information already exists!!!")
-                
-                
+
+
                 c.close()
                 conn.close()
                 self.donetoupload = False
                 ###############################
-            
+        else:
+            QMessageBox.about(self, "Warning", "Please press DONE button!!!")
             
     def addlist(self):
         if(len(self.FourthPageUi.containerno.text()) != 0):
@@ -1356,11 +1391,13 @@ class FifthPage(QMainWindow):
         self.FifthPageUi.fifth_setupUi(self)
 
         ############################
+        self.sea_booking_no = ""
         self.year = 0
         self.month = 0
         self.day = 0
         self.job_no = 0
-        self.transfer = 0
+        self.transfer = ""
+
         self.allcontainerdata = []
 
         ############################
@@ -1392,16 +1429,12 @@ class FifthPage(QMainWindow):
         self.FifthPageUi.listWidget.takeItem(self.FifthPageUi.listWidget.currentRow())
         
     def update(self):
-        conn = sqlite3.connect(self.path+ "\ ".strip()+"sea.db")
+        conn = sqlite3.connect(self.path  + "\ ".strip()+"database.db")
         c = conn.cursor()
-        
-        c.execute("delete from seadatabase" +
-                    " where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+" AND JOB_NUMBER="+self.job_no+")")
-        conn.commit()
 
         ####################
         cur_find_day = self.path+ "\ ".strip()+str(self.year)+ "\ ".strip()+self.month+ "\ ".strip()+self.day
-        
+
         jobfileno = str(self.FifthPageUi.jobfileno.text())
         jjno = str(self.FifthPageUi.jjno.text())
         shipper = str(self.FifthPageUi.shipper.text())
@@ -1417,38 +1450,58 @@ class FifthPage(QMainWindow):
             buttonReply = QMessageBox.question(self, 'Message !!!', "Form is not completed! Want to upload?", QMessageBox.Yes | QMessageBox.No)
             if buttonReply == QMessageBox.No:
                 upload = False
-                
-        if(upload == True):
-            make = []
-            c.execute("select rowid from seadatabase where Booking_No = ?", (bookingno,))
-            row = c.fetchone()
-            if(row):
-                make.append(False)
-                        
-            c.execute("select rowid from seadatabase where BL = ?", (bl_alb,))
-            row = c.fetchone()
-            if(row):
-                make.append(False)
+            if(len(bookingno)==0):
+                   QMessageBox.about(self, "Warning!!!", "Please insert Sea Booking No")
+                   upload = False
 
+        if(upload == True):
+            c.execute("delete from database where Booking_No_Sea = ?", (self.sea_booking_no,))
+            conn.commit()
+            self.sea_booking_no = bookingno
+
+            if (len(jobfileno)==0): jobfileno = "-"
+            if (len(jjno)==0): jjno = "-"
+            if (len(shipper)==0): shipper = "-"
+            if (len(consignee)==0): consignee = "-"
+            if (len(bl_alb)==0): bl_alb = "-"
+            if (len(origin)==0): origin = "-"
+            if (len(destination)==0): destination = "-"
+                
+            make = []
+            c.execute("select rowid from database where Booking_No_Sea = ?", (bookingno,))
+            row = c.fetchone()
+
+            if(row):
+                make.append(False)
             
             if False not in make:
                 for i in range(self.FifthPageUi.listWidget.count()):
                     container_no = self.FifthPageUi.listWidget.item(i).text()
-                    item = (jobfileno,jjno,shipper,consignee,bookingno,bl_alb,origin,destination,container_no,self.year,self.month,self.day,self.job_no,self.transfer,)
-            
-                    c.execute("INSERT INTO seadatabase (Job_File_No,JJ_No,Shipper,Consignee,Booking_No,BL,ORIGIN,DESTINATION,CONTAINER_NO,"+
+                    item = (jobfileno,jjno,shipper,consignee,bookingno,"-","-",bl_alb,origin,destination,container_no,
+                            self.year,self.month,self.day,self.job_no,self.transfer,)
+                    c.execute("INSERT INTO database (Job_File_No,JJ_No,Shipper,Consignee,Booking_No_Sea,"+
+                              "AWB,Booking_No_Truck,BL,ORIGIN,DESTINATION,CONTAINER_NO,"+
                                 "YEAR,MONTH,DAY,JOB_NUMBER,Transfer) "+
-                                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?);", item)
+                                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);", item)
                     conn.commit()
-                
+
+                if(self.FifthPageUi.listWidget.count() == 0):
+                    container_no = "-"
+                    item = (jobfileno,jjno,shipper,consignee,bookingno,"-","-",bl_alb,origin,destination,container_no,year,month,day,jj,transfer,)
+                    c.execute("INSERT INTO database (Job_File_No,JJ_No,Shipper,Consignee,Booking_No_Sea,AWB,Booking_No_Truck,BL,ORIGIN,DESTINATION,CONTAINER_NO,"+
+                                "YEAR,MONTH,DAY,JOB_NUMBER,Transfer) "+
+                                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);", item)
+                    conn.commit()
             else:
                 QMessageBox.about(self, "Warning", "This information already exists!!!")
+        
 
         os.startfile(cur_find_day + "\ ".strip() + "sea"+ "\ ".strip() + str(self.job_no))
         c.close()
+        
 
     def deleteall(self):
-        conn = sqlite3.connect(self.path+ "\ ".strip()+"sea.db")
+        conn = sqlite3.connect(self.path+ "\ ".strip()+"database.db")
         c = conn.cursor()
 
         upload = True
@@ -1456,12 +1509,12 @@ class FifthPage(QMainWindow):
             buttonReply = QMessageBox.question(self, 'Message !!!', "Are you sure you want to delete this job document?", QMessageBox.Yes | QMessageBox.No)
             if buttonReply == QMessageBox.No:
                 upload = False
-                   
+
         if(upload == True and self.allowdelete == True):
-            c.execute("select rowid  from seadatabase where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+")")
+            c.execute("select rowid from database where Booking_No_Sea = ? ", (self.sea_booking_no,))
             all_job_no = c.fetchall()
 
-            c.execute("select * from seadatabase where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+")")
+            c.execute("select * from database where Booking_No_Sea = ? ", (self.sea_booking_no,))
             sea_information = c.fetchall()
 
             p = self.path+ "\ ".strip()+self.year+ "\ ".strip()+self.month+ "\ ".strip()+self.day+ "\ ".strip()+"sea"
@@ -1487,9 +1540,10 @@ class FifthPage(QMainWindow):
 
                     current = information
 
-            c.execute("delete from seadatabase" +
-                    " where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+" AND JOB_NUMBER="+self.job_no+")")
+
+            c.execute("delete from database where Booking_No_Sea = ?", (self.sea_booking_no,))
             conn.commit()
+            self.sea_booking_no = ""
 
             s = self.path+ "\ ".strip()+self.year+ "\ ".strip()+self.month+ "\ ".strip()+self.day+"\ ".strip()+"sea"+"\ ".strip()+self.job_no
             if os.path.exists(s):
@@ -1497,16 +1551,19 @@ class FifthPage(QMainWindow):
                 
             curr = self.path+"\ ".strip()+self.year+"\ ".strip()+self.month+"\ ".strip()+self.day+"\ ".strip()+"sea"+"\ ".strip()
             for folderjobno in os.listdir(p)[int(self.job_no)-1:]:
-                c.execute("update seadatabase set JOB_NUMBER="+str(int(folderjobno)-1)+
-                          " where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+" AND JOB_NUMBER="+str(int(folderjobno))+")")
+                c.execute("update database set JOB_NUMBER=? where (YEAR=? AND MONTH=? AND DAY=? AND JOB_NUMBER=? AND AWB=? AND Booking_No_Truck=?)",
+                          (str(int(folderjobno)-1),self.year,self.month,self.day,str(int(folderjobno)),"-","-"))
+
+
                 conn.commit()
                 os.rename(curr+folderjobno, curr+str(int(folderjobno)-1))
 
             buttonReply = QMessageBox.about(self, "Message!!!", "Deleted successfully.")
             self.deleteitems()
 
-            self.allowdelete = False
-            c.close()
+            self.allowdelete = True
+            
+        c.close()
             
     def deleteitems(self):
         self.FifthPageUi.listWidget.clear()
@@ -1527,11 +1584,14 @@ class SixthPage(QMainWindow):
         self.SixthPageUi.sixth_setupUi(self)
 
         ############################
+        self.awb = ""
         self.year = 0
         self.month = 0
         self.day = 0
         self.job_no = 0
-        self.transfer = 0
+        self.transfer = ""
+        
+        #self.transfer = 0
         self.rowdata = []
         ############################
         self.allowdelete = True
@@ -1541,16 +1601,11 @@ class SixthPage(QMainWindow):
         self.path = MAINPATH + "\ ".strip() + "Job Database"
 
     def update(self):
-        conn = sqlite3.connect(self.path+ "\ ".strip()+"air.db")
+        conn = sqlite3.connect(self.path  + "\ ".strip()+"database.db")
         c = conn.cursor()
 
-        c.execute("delete from airdatabase" +
-                  " where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+" AND JOB_NUMBER="+self.job_no+")")
-        conn.commit()
-
         ####################
-        cur_find_day = self.path+ "\ ".strip()+self.year+ "\ ".strip()+self.month+ "\ ".strip()+self.day
-
+        cur_find_day = self.path+ "\ ".strip()+str(self.year)+ "\ ".strip()+self.month+ "\ ".strip()+self.day
         
         jobfileno = str(self.SixthPageUi.jobfileno.text())
         jjno = str(self.SixthPageUi.jjno.text())
@@ -1560,38 +1615,54 @@ class SixthPage(QMainWindow):
         origin = str(self.SixthPageUi.origin.text())
         destination = str(self.SixthPageUi.destination.text())
 
-        ###################
         upload = True
         if(len(jobfileno)==0 or len(jjno)==0 or len(shipper)==0 or len(consignee)==0 or len(awb)==0
                or len(origin)==0 or len(destination)==0):
             buttonReply = QMessageBox.question(self, 'Message !!!', "Form is not completed! Want to upload?", QMessageBox.Yes | QMessageBox.No)
             if buttonReply == QMessageBox.No:
                 upload = False
+            if(len(awb)==0):
+                QMessageBox.about(self, "Warning!!!", "Please insert air waybill.")
+                upload = False
 
         if(upload == True):
+            c.execute("delete from database where AWB = ?", (self.awb,))
+            conn.commit()
+            self.awb = awb
+            
+            if (len(jobfileno)==0): jobfileno = "-"
+            if (len(jjno)==0): jjno = "-"
+            if (len(shipper)==0): shipper = "-"
+            if (len(consignee)==0): consignee = "-"
+            if (len(origin)==0): origin = "-"
+            if (len(destination)==0): destination = "-"
+
             make = []
-            c.execute("select rowid from airdatabase where AWB = ?", (awb,))
+
+            c.execute("select rowid from database where AWB = ?", (awb,))
             row = c.fetchone()
+                    
             if(row):
                 make.append(False)
-
-            if False not in make:
-                item = (jobfileno,jjno,shipper,consignee,awb,origin,destination,self.year,self.month,self.day,self.job_no,self.transfer,)
-                c.execute("INSERT INTO airdatabase (Job_File_No,JJ_No,Shipper,Consignee,AWB,ORIGIN,DESTINATION,"+
-                         "YEAR, MONTH, DAY, JOB_NUMBER, Transfer) "+
-                        "VALUES (?,?,?,?,?,?,?,?,?,?,?,?);", item)
-                       
-                conn.commit()
             
+            if False not in make:
+
+                item = (jobfileno,jjno,shipper,consignee,"-",awb,"-","-",origin,destination,"-",
+                            self.year,self.month,self.day,self.job_no,self.transfer,)
+                c.execute("INSERT INTO database (Job_File_No,JJ_No,Shipper,Consignee,Booking_No_Sea,AWB,Booking_No_Truck,BL,ORIGIN,DESTINATION,CONTAINER_NO,"+
+                            "YEAR,MONTH,DAY,JOB_NUMBER,Transfer) "+
+                            "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);", item)
+                    
+                conn.commit()
+                
             else:
                 QMessageBox.about(self, "Warning", "This information already exists!!!")
 
         os.startfile(cur_find_day + "\ ".strip() + "air"+ "\ ".strip() + str(self.job_no))
         c.close() 
-        ###################
 
     def deleteall(self):
-        conn = sqlite3.connect(self.path+ "\ ".strip()+"air.db")
+        conn = sqlite3.connect(self.path+ "\ ".strip()+"database.db")
         c = conn.cursor()
 
         upload = True
@@ -1601,10 +1672,11 @@ class SixthPage(QMainWindow):
                 upload = False
                    
         if(upload == True and self.allowdelete == True):
-            c.execute("select rowid  from airdatabase where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+")")
+
+            c.execute("select rowid from database where AWB = ? ", (self.awb,))
             all_job_no = c.fetchall()
 
-            c.execute("select * from airdatabase where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+")")
+            c.execute("select * from database where AWB = ? ", (self.awb,))
             air_information = c.fetchall()
 
             p = self.path+ "\ ".strip()+self.year+ "\ ".strip()+self.month+ "\ ".strip()+self.day+ "\ ".strip()+"air"
@@ -1631,9 +1703,9 @@ class SixthPage(QMainWindow):
                     current = information
 
             
-            c.execute("delete from airdatabase" +
-                    " where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+" AND JOB_NUMBER="+self.job_no+")")
+            c.execute("delete from database where AWB = ?", (self.awb,))
             conn.commit()
+            self.awb = ""
 
             s = self.path+ "\ ".strip()+self.year+ "\ ".strip()+self.month+ "\ ".strip()+self.day+"\ ".strip()+"air"+"\ ".strip()+self.job_no
             if os.path.exists(s):
@@ -1641,14 +1713,14 @@ class SixthPage(QMainWindow):
                 
             curr = self.path+"\ ".strip()+self.year+"\ ".strip()+self.month+"\ ".strip()+self.day+"\ ".strip()+"air"+"\ ".strip() 
             for folderjobno in os.listdir(p)[int(self.job_no)-1:]:
-                c.execute("update airdatabase set JOB_NUMBER="+str(int(folderjobno)-1)+
-                          " where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+" AND JOB_NUMBER="+str(int(folderjobno))+")")
+                c.execute("update database set JOB_NUMBER=? where (YEAR=? AND MONTH=? AND DAY=? AND JOB_NUMBER=? AND Booking_No_Sea=? AND Booking_No_Truck=?)",
+                          (str(int(folderjobno)-1),self.year,self.month,self.day,str(int(folderjobno)),"-","-"))
                 conn.commit()
                 os.rename(curr+folderjobno, curr+str(int(folderjobno)-1))
 
             buttonReply = QMessageBox.about(self, "Message!!!", "Deleted successfully.")
             self.deleteitems()
-            self.allowdelete = False
+            self.allowdelete = True
             c.close()
 
     def deleteitems(self):
@@ -1668,10 +1740,13 @@ class SeventhPage(QMainWindow):
         self.SeventhPageUi.seventh_setupUi(self)
 
         ############################
+        self.truck_booking_no = ""
         self.year = 0
         self.month = 0
         self.day = 0
         self.job_no = 0
+        self.transfer = ""
+        
         self.transfer = 0
         self.rowdata = []
         ###########################
@@ -1702,15 +1777,11 @@ class SeventhPage(QMainWindow):
         self.SeventhPageUi.listWidget.takeItem(self.SeventhPageUi.listWidget.currentRow())
 
     def update(self):
-        conn = sqlite3.connect(self.path+ "\ ".strip()+"truck.db")
+        conn = sqlite3.connect(self.path+ "\ ".strip()+"database.db")
         c = conn.cursor()
 
-        c.execute("delete from truckdatabase" +
-                    " where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+" AND JOB_NUMBER="+self.job_no+")")
-        conn.commit()
         ####################
         cur_find_day = self.path+ "\ ".strip()+str(self.year)+ "\ ".strip()+self.month+ "\ ".strip()+self.day
-
         ####################
         jobfileno = str(self.SeventhPageUi.jobfileno.text())
         jjno = str(self.SeventhPageUi.jjno.text())
@@ -1719,38 +1790,65 @@ class SeventhPage(QMainWindow):
         bookingno = str(self.SeventhPageUi.bookingno.text())
         origin = str(self.SeventhPageUi.origin.text())
         destination = str(self.SeventhPageUi.destination.text())
-        
+
         upload = True
         if(len(jobfileno)==0 or len(jjno)==0 or len(shipper)==0 or len(consignee)==0 or len(bookingno)==0
             or len(origin)==0 or len(destination)==0 or self.SeventhPageUi.listWidget.count()==0):
             buttonReply = QMessageBox.question(self, 'Message !!!', "Form is not completed! Want to upload?", QMessageBox.Yes | QMessageBox.No)
             if buttonReply == QMessageBox.No:
                 upload = False
-                
+            if(len(bookingno)==0):
+                QMessageBox.about(self, "Warning!!!", "Please insert Truck Booking No.")
+                upload = False
+
         if(upload == True):
+            c.execute("delete from database where Booking_No_Truck = ?", (self.truck_booking_no,))
+            conn.commit()
+            self.truck_booking_no = bookingno
+            
+            if (len(jobfileno)==0): jobfileno = "-"
+            if (len(jjno)==0): jjno = "-"
+            if (len(shipper)==0): shipper = "-"
+            if (len(consignee)==0): consignee = "-"
+            if (len(origin)==0): origin = "-"
+            if (len(destination)==0): destination = "-"
             ##############################
             make = []
-            c.execute("select rowid from truckdatabase where Booking_No = ?", (bookingno,))
+                
+            c.execute("select rowid from database where Booking_No_Truck = ?", (bookingno,))
             row = c.fetchone()
+    
             if(row):
                 make.append(False)
 
             if False not in make:
                 for i in range(self.SeventhPageUi.listWidget.count()):
                     container_no = self.SeventhPageUi.listWidget.item(i).text()
-                    item = (jobfileno,jjno,shipper,consignee,bookingno,origin,destination,container_no,self.year,self.month,self.day,self.job_no,self.transfer,)
-                    c.execute("INSERT INTO truckdatabase (Job_File_No,JJ_No,Shipper,Consignee,Booking_No,ORIGIN,DESTINATION,CONTAINER_NO,"+
-                                "YEAR,MONTH,DAY,JOB_NUMBER,Transfer) "+
-                                "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?);", item)
+                    
+                    item = (jobfileno,jjno,shipper,consignee,"-","-",bookingno,"-",origin,destination,container_no,
+                            self.year,self.month,self.day,self.job_no,self.transfer,)
+                    c.execute("INSERT INTO database (Job_File_No,JJ_No,Shipper,Consignee,Booking_No_Sea,AWB,Booking_No_Truck,BL,ORIGIN,DESTINATION,CONTAINER_NO,"+
+                                  "YEAR,MONTH,DAY,JOB_NUMBER,Transfer) "+
+                                  "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);", item)
+                    conn.commit()
+
+                if(self.SeventhPageUi.listWidget.count() == 0):
+                    container_no = "-"
+                    item = (jobfileno,jjno,shipper,consignee,"-","-",bookingno,"-",origin,destination,container_no,
+                            self.year,self.month,self.day,self.job_no,self.transfer,)
+                    c.execute("INSERT INTO database (Job_File_No,JJ_No,Shipper,Consignee,Booking_No_Sea,AWB,Booking_No_Truck,BL,ORIGIN,DESTINATION,CONTAINER_NO,"+
+                                  "YEAR,MONTH,DAY,JOB_NUMBER,Transfer) "+
+                                  "VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?);", item)
                     conn.commit()
             else:
                 QMessageBox.about(self, "Warning", "This information already exists!!!")
 
         os.startfile(cur_find_day + "\ ".strip() + "truck"+ "\ ".strip() + str(self.job_no))
         c.close()
+        
 
     def deleteall(self):
-        conn = sqlite3.connect(self.path+ "\ ".strip()+"truck.db")
+        conn = sqlite3.connect(self.path+ "\ ".strip()+"database.db")
         c = conn.cursor()
 
         upload = True
@@ -1760,15 +1858,17 @@ class SeventhPage(QMainWindow):
                 upload = False
                    
         if(upload == True and self.allowdelete == True):
-            c.execute("select rowid from truckdatabase where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+")")
+
+            c.execute("select rowid from database where Booking_No_Truck = ? ", (self.truck_booking_no,))
             all_job_no = c.fetchall()
 
-            c.execute("select * from truckdatabase where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+")")
+            c.execute("select * from database where Booking_No_Truck = ? ", (self.truck_booking_no,))
             truck_information = c.fetchall()
 
             p = self.path+ "\ ".strip()+self.year+ "\ ".strip()+self.month+ "\ ".strip()+self.day+ "\ ".strip()+"truck"
 
             new_truck_information = {}
+            
             if(len(truck_information) != 0 ):
                 current = truck_information[0]
                 i = 1
@@ -1789,9 +1889,10 @@ class SeventhPage(QMainWindow):
 
                     current = information
 
-            c.execute("delete from truckdatabase" +
-                    " where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+" AND JOB_NUMBER="+self.job_no+")")
+            
+            c.execute("delete from database where Booking_No_Truck = ?", (self.truck_booking_no,))
             conn.commit()
+            self.truck_booking_no = ""
 
             s = self.path+ "\ ".strip()+self.year+ "\ ".strip()+self.month+ "\ ".strip()+self.day+"\ ".strip()+"truck"+"\ ".strip()+self.job_no
             if os.path.exists(s):
@@ -1799,16 +1900,17 @@ class SeventhPage(QMainWindow):
                 
             curr = self.path+"\ ".strip()+self.year+"\ ".strip()+self.month+"\ ".strip()+self.day+"\ ".strip()+"truck"+"\ ".strip()
             for folderjobno in os.listdir(p)[int(self.job_no)-1:]:
-                c.execute("update truckdatabase set JOB_NUMBER="+str(int(folderjobno)-1)+
-                          " where ("+"YEAR="+self.year +" AND MONTH="+self.month+" AND DAY="+self.day+" AND JOB_NUMBER="+str(int(folderjobno))+")")
+                c.execute("update database set JOB_NUMBER=? where (YEAR=? AND MONTH=? AND DAY=? AND JOB_NUMBER=? AND Booking_No_Sea=? AND AWB=?)",
+                          (str(int(folderjobno)-1),self.year,self.month,self.day,str(int(folderjobno)),"-","-"))
                 conn.commit()
                 os.rename(curr+folderjobno, curr+str(int(folderjobno)-1))
 
                 
             buttonReply = QMessageBox.about(self, "Message!!!", "Deleted successfully.")
             self.deleteitems()
-            self.allowdelete = False
+            self.allowdelete = True
             c.close()
+            
 
     def deleteitems(self):
         self.SeventhPageUi.listWidget.clear()
